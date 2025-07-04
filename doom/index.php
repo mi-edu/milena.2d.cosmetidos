@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-     <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    
+
 <?php
 
 // Configurações do banco de dados
@@ -23,9 +14,6 @@ $conn = new mysqli($host, $user, $password, $database);
 if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
-
-// Criptografia de senha (apenas para exemplo/criação de usuários)
-// echo password_hash(123456, PASSWORD_DEFAULT);
 
 // Receber dados do forms
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
@@ -57,23 +45,31 @@ if (!empty($dados["Sendlogin"])) {
         echo "<p style='color: red'>Erro: Usuário não encontrado!</p>";
     }
 }
-
 ?>
+<!DOCTYPE html>
+<!---inicio do formulario--->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Cosmetics Stars</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🌟 Login Cosmetics Stars 🌟</h1>
 
 
+<form method="post" action="">
+    <label>👩 Usuário:</label>
+    <input type="text" name="usuario" placeholder="digite o usuário" required><br></br>
 
-<!-- Inicio do formulario -->
-<form method="POST" action="">
+    <label>🔒 Senha:</label>
+    <input type="password" name="senha-usuario" placeholder="digite a senha" required><br></br>
 
-<label>Usuário: </label>
-<input type="text" name="usuario" placeholder="digite o usuário" required><br><br>
-
-<label>Senha: </label>
-<input type="password" name="senha_usuario" placeholder="digite a senha" required><br><br>
-
-<input type="submit" name="Sendlogin" value="Acessar">
+    <input type="submit" name="Sendlogin" value="Acessar">
 </form>
-<!-- fim do formulario -->
 
 </body>
 </html>
+<!-- fim do formulario -->
